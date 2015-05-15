@@ -2,7 +2,7 @@
 package serpientesyescaleras;
 
 
-public class Fichas {
+public abstract class Fichas {
     
     private int Indice;
     protected int posInicial;
