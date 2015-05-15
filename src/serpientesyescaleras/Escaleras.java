@@ -2,7 +2,8 @@
 package serpientesyescaleras;
 
 
-public class Escaleras extends Fichas{
+public class Escaleras extends Fichas
+{
     
     
 }
