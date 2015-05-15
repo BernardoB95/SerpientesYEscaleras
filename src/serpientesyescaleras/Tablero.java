@@ -13,18 +13,19 @@ public class Tablero {
     public void CrearTableroJuego(Fichas[][] Matriz)//Metodo de creacion de tablero
     {
         
-        for (int i = 7; i >= 0; i--) //<== Algoritmo de Guille
+        for (int j = 7; j >= 0; j--) //<== Algoritmo de Guille
         {
-            if (i%2==0 || i==0) 
+            if (j%2==0 || j==0) 
             {
-                for (int j = 7; j >= 0; j--) 
+                for (int i = 7; i >= 0; i--) 
                 {
-                   //Matriz[i][j] = ficha.setIndice(cont++);
+                   [i][j]=cont;
+                    //Matriz[i][j] = ficha.setIndice(cont++);
                 }
             }
             else
             {
-                for (int j = 0; j < 8; j++) 
+                for (int i = 0; i < 8; i++) 
                 {
                          
                 }
@@ -35,8 +36,15 @@ public class Tablero {
     
     public void MostrarTablero(Fichas[][] Matriz)//Impresion de tablero, parametro MATRIZ
     {
+       
         System.out.println("            TABLERO");
-        CrearTableroJuego(Matriz);
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                
+                
+            }
+            
+        }
         
         
     }
