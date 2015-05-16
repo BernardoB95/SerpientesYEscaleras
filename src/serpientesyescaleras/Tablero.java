@@ -18,12 +18,12 @@ public class Tablero {
        
         for (int i = 7; i >= 0; i--) //<== Algoritmo de Guille
         {
-            Fichas Casilla = new Fichas();
+            
             if (i%2==0 || i==0) 
             {
                 for (int j = 7; j >= 0; j--) 
                 {
-                   
+                   Fichas Casilla = new Fichas();
                     Casilla.setIndice(cont);
                     Matriz[i][j]=Casilla; 
                     //System.out.print(cont+"\t");
@@ -36,7 +36,7 @@ public class Tablero {
             {
                 for (int j = 0; j < 8; j++) 
                 {
-                     
+                    Fichas Casilla = new Fichas(); 
                     Casilla.setIndice(cont); 
                     Matriz[i][j]=Casilla;
                     //System.out.print(cont +"\t");
