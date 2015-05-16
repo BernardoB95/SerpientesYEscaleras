@@ -24,9 +24,7 @@ public class Tablero {
                 {
                    
                     Casilla.setIndice(cont); 
-                    Matriz[i][j]=Casilla; 
-                    //System.out.print(cont+"\t");
-                    //System.out.print(Matriz[i][j].getIndice()+"\t");
+                    Matriz[i][j]=Casilla;
                     cont++;
                     
                 }
@@ -38,18 +36,12 @@ public class Tablero {
                      
                     Casilla.setIndice(cont); 
                     Matriz[i][j]=Casilla;
-                    //System.out.print(cont +"\t");
-                    //System.out.print(Matriz[i][j].getIndice()+"\t");
                     cont++;
                 }
             }
             
         } 
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 8; j++) {
-                System.out.print(Matriz[i][j].getIndice()+"\t");
-            }
-        }
+        
     }
     
     public void MostrarTablero()//Impresion de tablero, parametro MATRIZ
