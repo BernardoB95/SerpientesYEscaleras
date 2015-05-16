@@ -7,8 +7,10 @@ public class Tablero {
     
     
     private Fichas Matriz[][] = new Fichas[8][8];
-    private Fichas casilla;
+    Fichas Casilla = new Fichas();
     int cont = 1;
+    
+   
     
     public void CrearTableroJuego()//Metodo de creacion de tablero
     {
@@ -20,26 +22,50 @@ public class Tablero {
             {
                 for (int j = 7; j >= 0; j--) 
                 {
-                    casilla.setIndice(cont);
-                    //Matriz[i][j] = casilla.getIndice();
-                    cont ++;
+                   
+                    Casilla.setIndice(cont); 
+                    Matriz[i][j]=Casilla; 
+                    //System.out.print(cont+"\t");
+                    //System.out.print(Matriz[i][j].getIndice()+"\t");
+                    cont++;
+                    
                 }
             }
             else
             {
                 for (int j = 0; j < 8; j++) 
                 {
-                   
+                     
+                    Casilla.setIndice(cont); 
+                    Matriz[i][j]=Casilla;
+                    //System.out.print(cont +"\t");
+                    //System.out.print(Matriz[i][j].getIndice()+"\t");
+                    cont++;
                 }
             }
             
+        } 
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                System.out.print(Matriz[i][j].getIndice()+"\t");
+            }
         }
     }
     
-    public void MostrarTablero(Fichas[][] Matriz)//Impresion de tablero, parametro MATRIZ
+    public void MostrarTablero()//Impresion de tablero, parametro MATRIZ
     {
-        System.out.println("            TABLERO");
-        //CrearTableroJuego(Matriz);
+        
+        System.out.println("                TABLERO");
+        for (int i = 0; i < 8; i++)
+        {
+            System.out.println("");
+            for (int j = 0; j < 8; j++)
+            {
+                System.out.print(Matriz[i][j].getIndice()+"\t");
+            }
+        }       
+            
+            
         
         
     }

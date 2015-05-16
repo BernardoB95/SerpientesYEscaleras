@@ -12,8 +12,8 @@ public class SerpientesYEscaleras {
         System.out.println("            SERPIENTES Y ESCALERAS");
         System.out.println("====================================================");
         System.out.println("[1] Jugar\n"
-                           +"[2] Highscores"
-                           +"[3] Instrucciones");
+                           +"[2] Highscores\n"
+                           +"[3] Instrucciones\n");
         int resp=0;
         Scanner sc = new Scanner(System.in);
         return resp = sc.nextInt();
@@ -34,9 +34,12 @@ public class SerpientesYEscaleras {
         }
     }
     
-    public static void main(String[] args) {
+    public static void main(String[] args) 
+    {
+       Tablero tab = new Tablero();
+       tab.CrearTableroJuego();
+       tab.MostrarTablero();
        
-        
         
         
     }
