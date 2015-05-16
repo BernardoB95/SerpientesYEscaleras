@@ -51,7 +51,7 @@ public class Jugadores extends Fichas
         return random;
     }
     
-    public void Mover(int random)
+    public void Accion(int random)
     {
         int acum = 0;
 

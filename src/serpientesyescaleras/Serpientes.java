@@ -21,5 +21,10 @@ public class Serpientes extends Fichas
         this.posFinal = posFinal;
     }
     
+    
+    public void Accion()
+    {
+        
+    }
 
 }

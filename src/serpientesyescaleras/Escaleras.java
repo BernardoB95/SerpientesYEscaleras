@@ -22,4 +22,9 @@ public class Escaleras extends Fichas
     }
     
     
+    public void Accion()
+    {
+         
+    }
+    
 }
