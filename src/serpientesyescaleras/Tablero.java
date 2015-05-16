@@ -23,11 +23,9 @@ public class Tablero {
             {
                 for (int j = 7; j >= 0; j--) 
                 {
-                   Fichas Casilla = new Fichas();
+                   Fichas Casilla = new Fichas();//Faltaba crear los 64 objetos
                     Casilla.setIndice(cont);
                     Matriz[i][j]=Casilla; 
-                    //System.out.print(cont+"\t");
-//                    System.out.print(Matriz[i][j].getIndice()+"\t");
                     cont++;
                     
                 }
@@ -36,21 +34,13 @@ public class Tablero {
             {
                 for (int j = 0; j < 8; j++) 
                 {
-                    Fichas Casilla = new Fichas(); 
+                    Fichas Casilla = new Fichas(); //Faltaba crear los 64 objetos
                     Casilla.setIndice(cont); 
                     Matriz[i][j]=Casilla;
-                    //System.out.print(cont +"\t");
-//                    System.out.print(Matriz[i][j].getIndice()+"\t");
                     cont++;
                 }
             }
         } 
-        
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 8; j++) {
-                System.out.print(Matriz[i][j].getIndice()+"\t");
-            }
-        }
     }
     
     public void MostrarTablero()//Impresion de tablero, parametro MATRIZ
