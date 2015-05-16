@@ -8,7 +8,12 @@ public class Fichas {
     protected int posInicial;
     protected int posFinal;
     
-    public Fichas()
+    public Fichas(int Indice)
+    {
+        this.Indice = Indice;    
+    }
+    
+    public Fichas ()
     {
         
     }
