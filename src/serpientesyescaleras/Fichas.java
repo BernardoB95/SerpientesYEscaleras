@@ -8,7 +8,9 @@ public class Fichas {
     protected int posInicial;
     protected int posFinal;
     
-    public Fichas()
+
+    
+    public Fichas ()
     {
         
     }
@@ -24,6 +26,6 @@ public class Fichas {
     
     
     
-    //public abstract void Accion();
+
     
 }

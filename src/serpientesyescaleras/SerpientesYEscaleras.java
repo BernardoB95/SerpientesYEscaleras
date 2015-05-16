@@ -1,6 +1,7 @@
 
 package serpientesyescaleras;
 
+import java.util.Random;
 import java.util.Scanner;
 
 
@@ -39,8 +40,7 @@ public class SerpientesYEscaleras {
        Tablero tab = new Tablero();
        tab.CrearTableroJuego();
        tab.MostrarTablero();
-       
-        
+
         
     }
     
