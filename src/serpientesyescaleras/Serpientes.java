@@ -22,9 +22,10 @@ public class Serpientes extends Fichas
     }
     
     
-    public void Accion()
+    public void Accion(Fichas Casilla)//Algoritmo no seguro
     {
-        
+        Casilla.setIndice(posFinal);
+        posInicial = posFinal;
     }
 
 }

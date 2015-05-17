@@ -22,9 +22,10 @@ public class Escaleras extends Fichas
     }
     
     
-    public void Accion()
+    public void Accion(Fichas Casilla)//No estoy seguro del algoritmo(Teorico)
     {
-         
+         Casilla.setIndice(posFinal);
+         posInicial = posFinal;
     }
     
 }
