@@ -37,15 +37,23 @@ public class SerpientesYEscaleras {
     
     public void CantidadJugadores()
     {
+        Tablero tab = new Tablero();
         int selec = 0;
         Scanner sc = new Scanner(System.in);
         
         System.out.println("Cuantos jugadores van a ser ingresados? 2-4");
+        
+        selec = sc.nextInt();
         switch(selec)
         {              
             case 2:
                 Jugadores jug = new Jugadores();
-                Jugadores jug2 = new Jugadores();                
+                Jugadores jug2 = new Jugadores();   
+                
+                
+                tab.CrearTableroJuego();
+                jug.Accion(jug.LanzarDado());
+                tab.MostrarTablero();   // <- revisar metodo
             break;
                 
             case 3:
@@ -66,6 +74,11 @@ public class SerpientesYEscaleras {
     
     public static void main(String[] args) 
     {
+//        SerpientesYEscaleras sye = new SerpientesYEscaleras();
+//        sye.CantidadJugadores();
+        
+        
+        
        Tablero tab = new Tablero();
        tab.CrearTableroJuego();
        tab.MostrarTablero();
