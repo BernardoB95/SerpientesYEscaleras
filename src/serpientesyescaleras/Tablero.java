@@ -54,7 +54,7 @@ public class Tablero {
             System.out.println("");
             for (int j = 0; j < 8; j++)
             {
-                System.out.print(Matriz[i][j].getIndice()+"\t");
+                System.out.print("["+Matriz[i][j].getIndice()+"]"+"\t");
             }
         }       
             

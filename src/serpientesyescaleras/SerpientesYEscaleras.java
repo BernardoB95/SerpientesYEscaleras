@@ -35,6 +35,35 @@ public class SerpientesYEscaleras {
         }
     }
     
+    public void CantidadJugadores()
+    {
+        int selec = 0;
+        Scanner sc = new Scanner(System.in);
+        
+        System.out.println("Cuantos jugadores van a ser ingresados? 2-4");
+        switch(selec)
+        {              
+            case 2:
+                Jugadores jug = new Jugadores();
+                Jugadores jug2 = new Jugadores();                
+            break;
+                
+            case 3:
+                Jugadores jug3 = new Jugadores();
+                
+            break;
+                
+            case 4:
+                Jugadores jug4 = new Jugadores();
+            break;
+                
+            default:
+                System.out.println("Numero invalido ingresado. Vuelva a ingresarlo por favor");
+            break;
+                
+        }
+    }
+    
     public static void main(String[] args) 
     {
        Tablero tab = new Tablero();

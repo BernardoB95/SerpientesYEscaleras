@@ -39,6 +39,9 @@ public class Jugadores extends Fichas
         this.posFinal = PosFinal;
     }
     
+    public Jugadores(){
+        
+    }
     
     
     public int LanzarDado()
