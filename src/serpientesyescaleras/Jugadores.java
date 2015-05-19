@@ -50,17 +50,19 @@ public class Jugadores extends Fichas
         Random rd = new Random();
         
         random = rd.nextInt(6)+1;
-        
         return random;
+        
     }
     
-    public void Accion(int random)
+    public int Accion(int random)
     {
-        int acum = 0;
+        int acum = 0;        
 
         posFinal = posInicial + random;
         acum = posFinal;
         posInicial = posFinal;
+        
+        return posFinal;
     }
     
 }

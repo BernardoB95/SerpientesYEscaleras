@@ -45,8 +45,9 @@ public class Tablero {
 
     }
     
-    public void MostrarTablero()//Impresion de tablero, parametro MATRIZ
+    public void MostrarTablero(Jugadores jugador)//Impresion de tablero, parametro MATRIZ
     {
+        int pos = jugador.Accion(jugador.LanzarDado());
         
         System.out.println("                     TABLERO");
         for (int i = 0; i < 8; i++)
@@ -54,7 +55,12 @@ public class Tablero {
             System.out.println("");
             for (int j = 0; j < 8; j++)
             {
-                System.out.print("["+Matriz[i][j].getIndice()+"]"+"\t");
+                if(Matriz[i][j].getIndice() == pos)
+                {
+                    System.out.print("[X]\t");
+                }else{
+                    System.out.print("["+Matriz[i][j].getIndice()+"]"+"\t");  
+                }
             }
         }       
             
