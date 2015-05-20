@@ -33,12 +33,14 @@ public class Jugadores extends Fichas
         this.posFinal = posFinal;
     }
 
-    public Jugadores(String nombre, int PosInicial, int PosFinal) {
-        this.nombre = nombre;
-        this.posInicial = PosInicial;
-        this.posFinal = PosFinal;
+    public boolean isStatus() {
+        return status;
     }
-    
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+   
     public Jugadores(){
         
     }

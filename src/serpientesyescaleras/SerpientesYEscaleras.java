@@ -250,7 +250,9 @@ public class SerpientesYEscaleras {
     public static void main(String[] args) 
     {
         SerpientesYEscaleras sye = new SerpientesYEscaleras();
-        sye.Juego(sye.Menu());
+        Tablero tab = new Tablero();
+        
+        sye.Juego(sye.Menu()); 
        
 
         
