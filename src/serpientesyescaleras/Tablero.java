@@ -2,6 +2,9 @@
 package serpientesyescaleras;
 
 import java.util.Scanner;
+import java.io.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class Tablero {
@@ -10,7 +13,8 @@ public class Tablero {
     
     private Fichas Matriz[][] = new Fichas[8][8];
     private Serpientes vecS[];
-    private Escaleras vecE[];    
+    private Escaleras vecE[];  
+    private File archivo = new File("Record.txt");
     
     int cont = 1;
     int cont6 = 0;
@@ -52,7 +56,11 @@ public class Tablero {
                 }
             }
         } 
-        AsiganarSerpiente();
+         try {
+             AsiganarSerpiente();
+         } catch (IOException ex) {
+             Logger.getLogger(Tablero.class.getName()).log(Level.SEVERE, null, ex);
+         }
         AsiganarEscalera();
         
         
@@ -60,10 +68,13 @@ public class Tablero {
     
     public void MostrarTablero(Jugadores jugador)//Impresion de tablero, parametro MATRIZ
     {
-        int rand =jugador.LanzarDado();
+        int rand =7;
         int pos = jugador.Accion(rand);
+        boolean ver; 
         Scanner sc = new Scanner(System.in);
         
+        if(rand!=6)
+                cont6=0;
         if(rand==6)
             jugador.setStatus(false);
         
@@ -73,26 +84,44 @@ public class Tablero {
         }
         else
         {
-           System.out.println("                     TABLERO");
-        for (int i = 0; i < 8; i++)
-        {
-            System.out.println("");
-            for (int j = 0; j < 8; j++)
-            {
-                if(Matriz[i][j].getIndice() == pos)
-                {
-                    System.out.print("[X]\t");
-                }else if (Matriz[i][j].isStatusS()==true){
-                     System.out.print("[ $]\t");
-                     //jugador.setPosFinal(posFinalS);
-                }else if (Matriz[i][j].isStatusE()==true){
-                     System.out.print("[ #]\t"); 
-                }else{
-                   System.out.print("["+Matriz[i][j].getIndice()+"]"+"\t"); 
-                }
-            }
-        }
-        
+            do{
+                System.out.println("\n\nHas caido en una serpiente/escalera, su nueva posicion es ->"+pos+"\n");
+                ver = false;
+                System.out.println("                     TABLERO");
+             for (int i = 0; i < 8; i++)
+             {
+                 System.out.println("");
+                 for (int j = 0; j < 8; j++)
+                 {
+                     if (Matriz[i][j].isStatusS()==true){
+                          System.out.print("[ $]\t");
+                          if(jugador.getPosFinal() == Matriz[i][j].getIndice())
+                          {
+                              
+                             jugador.setPosFinal(Matriz[i][j].getPosFinalS());
+                             jugador.setPosInicial(Matriz[i][j].getPosFinalS());
+                             pos = Matriz[i][j].getPosFinalS();
+                              ver=true;
+                          }
+                     }else if (Matriz[i][j].isStatusE()==true){
+                          System.out.print("[ #]\t"); 
+                          if(jugador.getPosFinal() == Matriz[i][j].getIndice())
+                          {
+                              
+                             jugador.setPosFinal(Matriz[i][j].getPosFinalE());
+                             jugador.setPosInicial(Matriz[i][j].getPosFinalE());
+                             pos = Matriz[i][j].getPosFinalE();
+                              ver=true;
+                          }
+                     }else if(Matriz[i][j].getIndice() == pos)
+                     {
+                         System.out.print("[X]\t");
+                     }else {
+                        System.out.print("["+Matriz[i][j].getIndice()+"]"+"\t"); 
+                     }
+                 }
+             }
+            }while(ver==true);
         }
         
                
@@ -123,8 +152,16 @@ public class Tablero {
     }
     
     
-    public void AsiganarSerpiente(/*Jugadores Jugador*/)// Modificacion parametro
+    public void AsiganarSerpiente(/*Jugadores Jugador*/) throws IOException// Modificacion parametro
     {
+        
+        BufferedWriter bw = new BufferedWriter(new FileWriter(archivo,true));
+        
+        if(archivo.exists())
+        {
+            
+        }
+        
         System.out.println("Ingrese cuantas serpientes quiere agregar:");
         int num = sc.nextInt();
         int indicefinal=0;
@@ -144,10 +181,10 @@ public class Tablero {
             Matriz[yi][xi].setStatusS(true);
             snake.setIndiceS(Matriz[yi][xi].getIndice());
             snake.setIndiceSf(Matriz[yf][xf].getIndice());
-            indicefinal = snake.getIndiceSf();
-//          snake.setStatus(true);
+            Matriz[yi][xi].setPosFinalS(snake.getIndiceSf());
             vecS[i] = snake;
-            //snake.Accion(Jugador);              //Modificacion tambien
+            
+            
         }
     
         
@@ -173,14 +210,14 @@ public class Tablero {
             Matriz[yi][xi].setStatusE(true);
             ladders.setIndiceE(Matriz[yi][xi].getIndice());
             ladders.setIndiceEf(Matriz[yf][xf].getIndice());
+            Matriz[yi][xi].setPosFinalE(ladders.getIndiceEf());
+            
             //snake.setStatus(true);
             vecE[i] = ladders;
-            
-            
-            
-            
+         
         }
         
+//        public 
     }
     
 }
