@@ -50,9 +50,11 @@ public class Serpientes extends Fichas
     
     
 
-    public void Accion(Fichas Casilla)//Algoritmo no seguro
+    public void Accion(Jugadores Jugador)//Algoritmo no seguro
     {
-        Casilla.setIndice(posFinal);
-        posInicial = posFinal;
+        Jugador.setPosFinal(indiceSf);
+        Jugador.setPosInicial(indiceSf);
+//        Casilla.setIndice(posFinal);
+//        posInicial = posFinal;
     }
 }

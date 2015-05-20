@@ -60,8 +60,8 @@ public class Tablero {
     
     public void MostrarTablero(Jugadores jugador)//Impresion de tablero, parametro MATRIZ
     {
-        int rand = jugador.LanzarDado();
-        int pos = jugador.Accion(6);
+        int rand =jugador.LanzarDado();
+        int pos = jugador.Accion(rand);
         Scanner sc = new Scanner(System.in);
         
         if(rand==6)
@@ -83,10 +83,10 @@ public class Tablero {
                 {
                     System.out.print("[X]\t");
                 }else if (Matriz[i][j].isStatusS()==true){
-                     System.out.print("[$]\t"); 
+                     System.out.print("[ $]\t");
                      //jugador.setPosFinal(posFinalS);
                 }else if (Matriz[i][j].isStatusE()==true){
-                     System.out.print("[#]\t"); 
+                     System.out.print("[ #]\t"); 
                 }else{
                    System.out.print("["+Matriz[i][j].getIndice()+"]"+"\t"); 
                 }
@@ -123,7 +123,7 @@ public class Tablero {
     }
     
     
-    public int AsiganarSerpiente()
+    public void AsiganarSerpiente(/*Jugadores Jugador*/)// Modificacion parametro
     {
         System.out.println("Ingrese cuantas serpientes quiere agregar:");
         int num = sc.nextInt();
@@ -145,11 +145,11 @@ public class Tablero {
             snake.setIndiceS(Matriz[yi][xi].getIndice());
             snake.setIndiceSf(Matriz[yf][xf].getIndice());
             indicefinal = snake.getIndiceSf();
-//            snake.setStatus(true);
+//          snake.setStatus(true);
             vecS[i] = snake;
+            //snake.Accion(Jugador);              //Modificacion tambien
         }
-            
-        return indicefinal;
+    
         
     }
     
