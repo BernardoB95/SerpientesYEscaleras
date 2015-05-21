@@ -70,7 +70,7 @@ public class Tablero {
         
         int rand =jugador.LanzarDado();
         int pos = jugador.Accion(rand);
-        boolean ver=false; 
+        boolean ver=false;
         Scanner sc = new Scanner(System.in);
         
         if(jugador.getPosFinal()<64)//Validacion FIN JUEGO
@@ -82,6 +82,7 @@ public class Tablero {
         
         if(jugador.isStatus()== true)
         {
+            System.out.println("\n         Has sacado ["+rand+"] en el dado\n");
             System.out.println("Debe sacar 6 para ser desbloqueado de la posicion [0]");
         }
         else
@@ -91,6 +92,11 @@ public class Tablero {
                     System.out.println("\n\nHas caido en una serpiente/escalera, su nueva posicion es ->"+pos+"\n");
                 }                
                 ver = false;
+//                if(pos>64 && TipoJuego() == false){
+//                    System.out.println("Has sido devuelto a tu casilla ya que debes llegar exacto a 64");
+//                    pos = pos - rand;
+//                }
+                System.out.println("\n         Has sacado ["+rand+"] en el dado\n");
                 System.out.println("                     TABLERO");
              for (int i = 0; i < 8; i++)
              {
@@ -129,28 +135,32 @@ public class Tablero {
         }
         
                
-            
-       if(rand == 6){
-           cont6++;
-            if(cont6 == 3){
-                jugador.setStatus(true);
-                jugador.setPosFinal(0);
-                jugador.setPosInicial(0);
-                System.out.println("\nEl jugador se ha devuelto a la casilla [0]");
-                System.out.println("Volver a sacar 6 en proximas rondas para salir de la penalidad.");
-                System.out.println("");
-                cont6 =0;
-                
-                
-            }else{
-            System.out.println("");
-            System.out.println("Le toca repetir turno ya que salio 6. Lanzar el dado? [1] Si   [2] No");
-            int lanzar = sc.nextInt();
-            if(lanzar == 1)
-                MostrarTablero(jugador);
+        if(jugador.getPosFinal()<64){    
+            if(rand == 6){
+                cont6++;
+                 if(cont6 == 3){
+                     jugador.setStatus(true);
+                     jugador.setPosFinal(0);
+                     jugador.setPosInicial(0);
+                     System.out.println("\nEl jugador se ha devuelto a la casilla [0]");
+                     System.out.println("Volver a sacar 6 en proximas rondas para salir de la penalidad.");
+                     System.out.println("");
+                     cont6 =0;
+
+
+                 }else{
+                 System.out.println("");
+                 System.out.println("Le toca repetir turno ya que salio 6. Lanzar el dado? [1] Si   [2] No");
+                 int lanzar = sc.nextInt();
+                 if(lanzar == 1)
+                     MostrarTablero(jugador);
+                 }
+
+                }
             }
-           
-        }
+
+            
+        
         }
         
         if(jugador.getPosFinal()>=64)
@@ -250,7 +260,12 @@ public class Tablero {
         
     }
     
-    
+//    public boolean TipoJuego()
+//    {
+//     Este boolean deberia retornar true o false para que el if de mostrarmtatriz furule   
+//
+//    }
+      
     public void AsiganarSerpiente(/*Jugadores Jugador*/) throws IOException// Modificacion parametro
     {
         
@@ -268,18 +283,26 @@ public class Tablero {
         vecS = new Serpientes[num];
         
         for (int i = 0; i < vecS.length; i++) {
+            int sval=0;
+            int xi, yi, xf, yf;
             Serpientes snake = new Serpientes();
-            System.out.println("Introduzca el valore X inicial");
-            int xi = sc.nextInt();
-            System.out.println("Introduzca el valore Y inicial");
-            int yi = sc.nextInt();
-            System.out.println("Introduzca el valore X final");
-            int xf = sc.nextInt();
-            System.out.println("Introduzca el valore Y final");
-            int yf = sc.nextInt();
+            do{
+                if(sval>0){
+                    System.out.println("Por favor ingrese un valor donde la cabeza este mas arriba que la cola\n");
+                }
+                sval++;
+                System.out.println("Introduzca el valore X inicial");
+                xi = sc.nextInt();
+                System.out.println("Introduzca el valore Y inicial");
+                yi = sc.nextInt();
+                System.out.println("Introduzca el valore X final");
+                xf = sc.nextInt();
+                System.out.println("Introduzca el valore Y final");
+                yf = sc.nextInt();
+                snake.setIndiceS(Matriz[yi][xi].getIndice());
+                snake.setIndiceSf(Matriz[yf][xf].getIndice());
+            }while (snake.getIndiceS()<snake.getIndiceSf());
             Matriz[yi][xi].setStatusS(true);
-            snake.setIndiceS(Matriz[yi][xi].getIndice());
-            snake.setIndiceSf(Matriz[yf][xf].getIndice());
             Matriz[yi][xi].setPosFinalS(snake.getIndiceSf());
             vecS[i] = snake;
             
@@ -297,21 +320,27 @@ public class Tablero {
         vecE = new Escaleras[num];
         
         for (int i = 0; i < vecE.length; i++) {
+            int eval=0;
+            int xi, yi, xf, yf;
             Escaleras ladders = new Escaleras();
-            System.out.println("Introduzca el valore X inicial");
-            int xi = sc.nextInt();
-            System.out.println("Introduzca el valore Y inicial");
-            int yi = sc.nextInt();
-            System.out.println("Introduzca el valore X final");
-            int xf = sc.nextInt();
-            System.out.println("Introduzca el valore Y final");
-            int yf = sc.nextInt();            
+            do{
+                if(eval>0){
+                    System.out.println("Por favor ingrese un valor donde el principio de la escalera este abajo del final\n");
+                }
+                eval++;
+                System.out.println("Introduzca el valore X inicial");
+                xi = sc.nextInt();
+                System.out.println("Introduzca el valore Y inicial");
+                yi = sc.nextInt();
+                System.out.println("Introduzca el valore X final");
+                xf = sc.nextInt();
+                System.out.println("Introduzca el valore Y final");
+                yf = sc.nextInt();
+                ladders.setIndiceE(Matriz[yi][xi].getIndice());
+                ladders.setIndiceEf(Matriz[yf][xf].getIndice());
+            }while(ladders.getIndiceE()>ladders.getIndiceEf());
             Matriz[yi][xi].setStatusE(true);
-            ladders.setIndiceE(Matriz[yi][xi].getIndice());
-            ladders.setIndiceEf(Matriz[yf][xf].getIndice());
             Matriz[yi][xi].setPosFinalE(ladders.getIndiceEf());
-            
-            //snake.setStatus(true);
             vecE[i] = ladders;
          
         }
