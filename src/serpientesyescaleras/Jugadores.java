@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class Jugadores extends Fichas
 {
-    
+    //Atributo
     private String nombre;
 
     public String getNombre() {
@@ -45,8 +45,8 @@ public class Jugadores extends Fichas
         
     }
     
-    
-    public int LanzarDado()
+    //Metodos
+    public int LanzarDado()//Metodo random dado 1-6
     {
         int random = 0;
         Random rd = new Random();
@@ -56,7 +56,7 @@ public class Jugadores extends Fichas
         
     }
     
-    public int Accion(int random)
+    public int Accion(int random)//Metodo de movimiento con indices. Recibe LanzarDado por parametro
     {
         int acum = 0;        
 

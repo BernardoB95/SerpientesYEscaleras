@@ -4,8 +4,8 @@ package serpientesyescaleras;
 
 public class Escaleras extends Fichas
 {
-    private int indiceE;
-    private int indiceEf;
+    private int indiceE;//Indice piso escalera
+    private int indiceEf;//Indice tope escalera
     
     public int getPosInicial() {
         return posInicial;
@@ -47,9 +47,9 @@ public class Escaleras extends Fichas
         this.indiceEf = indiceEf;
     }
     
-    public void Accion(Fichas Casilla)//No estoy seguro del algoritmo(Teorico)
-    {
-         Casilla.setIndice(posFinal);
-         posInicial = posFinal;
-    }
+//    public void Accion(Fichas Casilla)//No estoy seguro del algoritmo(Teorico)
+//    {
+//         Casilla.setIndice(posFinal);
+//         posInicial = posFinal;
+//    }
 }

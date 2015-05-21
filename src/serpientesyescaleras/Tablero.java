@@ -11,10 +11,12 @@ public class Tablero {
      Scanner sc = new Scanner(System.in);
     
     
-    private Fichas Matriz[][] = new Fichas[8][8];
-    private Serpientes vecS[];
+     //Atributos de la Clase
+     
+    private Fichas Matriz[][] = new Fichas[8][8];//Matriz de objetos
+    private Serpientes vecS[];//Vectores de objetos
     private Escaleras vecE[];  
-    private File archivo = new File("Record.txt");
+    private File archivo = new File("Record.txt");//Archivo de texto
     int cont = 1;
     int cont6 = 0;
     
@@ -32,7 +34,7 @@ public class Tablero {
             {
                 for (int j = 7; j >= 0; j--) 
                 {
-                   Fichas Casilla = new Fichas();//Faltaba crear los 64 objetos
+                   Fichas Casilla = new Fichas();//Creacion y Asignacion de objetos
                     Casilla.setIndice(cont);
                     Casilla.setStatusS(false);
                     Casilla.setStatusE(false);
@@ -46,7 +48,7 @@ public class Tablero {
             {
                 for (int j = 0; j < 8; j++) 
                 {
-                    Fichas Casilla = new Fichas(); //Faltaba crear los 64 objetos
+                    Fichas Casilla = new Fichas(); //Creacion y asignacion de objetos
                     Casilla.setIndice(cont);
                     Casilla.setStatusS(false);
                     Casilla.setStatusE(false);
@@ -56,11 +58,11 @@ public class Tablero {
             }
         } 
          try {
-             AsiganarSerpiente();
+             AsiganarSerpiente();//Metodo de asignacion de serpientes al tablero
          } catch (IOException ex) {
              Logger.getLogger(Tablero.class.getName()).log(Level.SEVERE, null, ex);
          }
-        AsiganarEscalera();
+        AsiganarEscalera();//Metodo de asignacion de escalera al tablero
         
         
     }
@@ -68,9 +70,9 @@ public class Tablero {
     public void MostrarTablero(Jugadores jugador, int num) throws IOException//Impresion de tablero, parametro MATRIZ
     {
         
-        int rand =jugador.LanzarDado();
-        int pos = jugador.Accion(rand);
-        boolean ver=false;
+        int rand =jugador.LanzarDado(); //Metodo de lanzamiento random de dado
+        int pos = jugador.Accion(rand);//Metodo de movimiento del jugador
+        boolean ver=false;  //Verificacion de ubicacion en serpiente o escalera
         Scanner sc = new Scanner(System.in);
         
         if(jugador.getPosFinal()<64)//Validacion FIN JUEGO
@@ -80,7 +82,7 @@ public class Tablero {
         if(rand==6)
             jugador.setStatus(false);
         
-        if(jugador.isStatus()== true)
+        if(jugador.isStatus()== true)   //Condicion de bloqueo del jugador
         {
             System.out.println("\n         Has sacado ["+rand+"] en el dado\n");
             System.out.println("Debe sacar 6 para ser desbloqueado de la posicion [0]");
@@ -88,7 +90,7 @@ public class Tablero {
         else
         {
             do{
-                if(ver == true){
+                if(ver == true){//Condicion de caer en serpiente o escalera -- Cambio de posicion
                     System.out.println("\n\nHas caido en una serpiente/escalera, su nueva posicion es ->"+pos+"\n");
                 }                
                 ver = false;
@@ -103,7 +105,7 @@ public class Tablero {
                  System.out.println("");
                  for (int j = 0; j < 8; j++)
                  {
-                     if (Matriz[i][j].isStatusS()==true){
+                     if (Matriz[i][j].isStatusS()==true){//Condicion caida serpiente
                           System.out.print("[ $]\t");
                           if(jugador.getPosFinal() == Matriz[i][j].getIndice())
                           {
@@ -111,9 +113,9 @@ public class Tablero {
                              jugador.setPosFinal(Matriz[i][j].getPosFinalS());
                              jugador.setPosInicial(Matriz[i][j].getPosFinalS());
                              pos = Matriz[i][j].getPosFinalS();
-                              ver=true;
+                              ver=true;//Boolean que verifica sicaes en una csailla comprometida
                           }
-                     }else if (Matriz[i][j].isStatusE()==true){
+                     }else if (Matriz[i][j].isStatusE()==true){//Condicion de caida escalera
                           System.out.print("[ #]\t"); 
                           if(jugador.getPosFinal() == Matriz[i][j].getIndice())
                           {
@@ -121,11 +123,11 @@ public class Tablero {
                              jugador.setPosFinal(Matriz[i][j].getPosFinalE());
                              jugador.setPosInicial(Matriz[i][j].getPosFinalE());
                              pos = Matriz[i][j].getPosFinalE();
-                              ver=true;
+                              ver=true;//Boolean que verifica si caes en una casilla comprometida
                           }
                      }else if(Matriz[i][j].getIndice() == pos)
                      {
-                         System.out.print("[X]\t");
+                         System.out.print("[X]\t");//Respresentacion movimiento jugador
                      }else {
                         System.out.print("["+Matriz[i][j].getIndice()+"]"+"\t"); 
                      }
@@ -138,7 +140,7 @@ public class Tablero {
         if(jugador.getPosFinal()<64){    
             if(rand == 6){
                 cont6++;
-                 if(cont6 == 3){
+                 if(cont6 == 3){//Bloqueo del jugador despues de sacar 3 veces un 6
                      jugador.setStatus(true);
                      jugador.setPosFinal(0);
                      jugador.setPosInicial(0);
@@ -148,7 +150,7 @@ public class Tablero {
                      cont6 =0;
 
 
-                 }else{
+                 }else{//Repeticion de turno del jugador despues de sacar un 6
                  System.out.println("");
                  System.out.println("Le toca repetir turno ya que salio 6. Lanzar el dado? [1] Si   [2] No");
                  int lanzar = sc.nextInt();
@@ -163,11 +165,11 @@ public class Tablero {
         
         }
         
-        if(jugador.getPosFinal()>=64)
+        if(jugador.getPosFinal()>=64)//Condicion de ganado
         {
             System.out.println("Felicidades! Has ganado");
         
-            BufferedWriter bw = new BufferedWriter(new FileWriter(archivo,true));
+            BufferedWriter bw = new BufferedWriter(new FileWriter(archivo,true));//Guardado del ganador en archivo txt
             String nombre;
 
             if(archivo.exists())
@@ -196,7 +198,7 @@ public class Tablero {
         return variable;
     }
       
-    public void AsiganarSerpiente(/*Jugadores Jugador*/) throws IOException// Modificacion parametro
+    public void AsiganarSerpiente() throws IOException //Metodo de asignacion de serpiente
     {
         
         BufferedWriter bw = new BufferedWriter(new FileWriter(archivo,true));
@@ -229,10 +231,10 @@ public class Tablero {
                 xf = sc.nextInt();
                 System.out.println("Introduzca el valore Y final");
                 yf = sc.nextInt();
-                snake.setIndiceS(Matriz[yi][xi].getIndice());
-                snake.setIndiceSf(Matriz[yf][xf].getIndice());
+                snake.setIndiceS(Matriz[yi][xi].getIndice());//Asignacion indice cabeza
+                snake.setIndiceSf(Matriz[yf][xf].getIndice());//Asignacion indice cola
             }while (snake.getIndiceS()<snake.getIndiceSf());
-            Matriz[yi][xi].setStatusS(true);
+            Matriz[yi][xi].setStatusS(true);//Asignacion de status a la casilla de la matriz
             Matriz[yi][xi].setPosFinalS(snake.getIndiceSf());
             vecS[i] = snake;
             
@@ -266,16 +268,15 @@ public class Tablero {
                 xf = sc.nextInt();
                 System.out.println("Introduzca el valore Y final");
                 yf = sc.nextInt();
-                ladders.setIndiceE(Matriz[yi][xi].getIndice());
-                ladders.setIndiceEf(Matriz[yf][xf].getIndice());
+                ladders.setIndiceE(Matriz[yi][xi].getIndice());//Asignacion pie de escalera
+                ladders.setIndiceEf(Matriz[yf][xf].getIndice());//Asignacion indice tope escalera
             }while(ladders.getIndiceE()>ladders.getIndiceEf());
-            Matriz[yi][xi].setStatusE(true);
+            Matriz[yi][xi].setStatusE(true);//Asignacion de status a la casilla
             Matriz[yi][xi].setPosFinalE(ladders.getIndiceEf());
             vecE[i] = ladders;
          
         }
         
-//        public 
     }
     
 }

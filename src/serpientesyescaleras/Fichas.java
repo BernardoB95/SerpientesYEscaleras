@@ -4,6 +4,7 @@ package serpientesyescaleras;
 
 public class Fichas {
     
+    //Atributos
     private int Indice;
     protected int posInicial;
     protected int posFinal;
@@ -14,7 +15,7 @@ public class Fichas {
     private int posFinalS;
     private boolean statusmodo;
 
-    
+    //Constructor Default
     public Fichas ()
     {
         

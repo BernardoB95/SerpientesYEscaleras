@@ -53,6 +53,10 @@ public class SerpientesYEscaleras {
                 } 
 
                 System.out.println("\n");
+                System.out.println("\nPara volver al menu inicial presione [1]");
+                int opcion = sc.nextInt();
+                if(opcion == 1)
+                    Juego(Menu());
                 
                 break;
               
@@ -70,7 +74,7 @@ public class SerpientesYEscaleras {
                         + "\nEsta adaptacion del juego original esta hecha por Bernardo Bello"
                         + "\ny Guillermo Hellmund.");
                 System.out.println("\nPara volver al menu inicial presione [1]");
-                int opcion = sc.nextInt();
+                opcion = sc.nextInt();
                 if(opcion == 1)
                     Juego(Menu());
                 
@@ -79,7 +83,7 @@ public class SerpientesYEscaleras {
     }
     
     
-    public void CantidadJugadores() throws IOException
+    public void CantidadJugadores() throws IOException  // Estructura que contiene los metodos de jugar
     {
         int selec = 0;
         Scanner sc = new Scanner(System.in);
@@ -142,9 +146,9 @@ public class SerpientesYEscaleras {
                 
                 do
                 {
-                    cont1++;
+                    cont1++;//Contador par o impar
 
-                    if(cont1%2==0)
+                    if(cont1%2==0)//Validacion div modular para jug1
                     {
 
                         System.out.println("[Jugador 1]Desea lanzar el dado?: [1] Si  [2] No");
@@ -158,7 +162,7 @@ public class SerpientesYEscaleras {
                         }
 
                     }
-                    else
+                    else//Validacion div modular para jug2
                     {
 
                         System.out.println("[Jugador 2]Desea lanzar el dado?: [1] Si  [2] No");
@@ -172,12 +176,12 @@ public class SerpientesYEscaleras {
                         }
                     }
                 }
-                while(jug.posFinal <= 64 && jug2.posFinal <= 64);
+                while(jug.posFinal <= 64 && jug2.posFinal <= 64);//Condicion de fin de juego
                 
 
     }
     
-    public void Jugar3() throws IOException
+    public void Jugar3() throws IOException //Asume los comentarios de manera similar a Jugar2
     {
         Tablero tab = new Tablero();
         Jugadores jug = new Jugadores();
@@ -259,7 +263,7 @@ public class SerpientesYEscaleras {
                 
     }
     
-    public void Jugar4() throws IOException
+    public void Jugar4() throws IOException //Asume los comentarios de manera similar a Jugar2 y Jugar3
     {
         Tablero tab = new Tablero();
         Jugadores jug = new Jugadores();

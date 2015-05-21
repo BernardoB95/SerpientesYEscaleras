@@ -4,9 +4,9 @@ package serpientesyescaleras;
 
 public class Serpientes extends Fichas
 {
-    
-    private int indiceS;
-    private int indiceSf;
+    //Atributos
+    private int indiceS;//Indice cabeza
+    private int indiceSf;//Indice Cola
 
     public int getPosInicial() {
         return posInicial;
@@ -50,11 +50,11 @@ public class Serpientes extends Fichas
     
     
 
-    public void Accion(Jugadores Jugador)//Algoritmo no seguro
-    {
-        Jugador.setPosFinal(indiceSf);
-        Jugador.setPosInicial(indiceSf);
-//        Casilla.setIndice(posFinal);
-//        posInicial = posFinal;
-    }
+////    public void Accion(Jugadores Jugador)//Algoritmo no seguro
+////    {
+////        Jugador.setPosFinal(indiceSf);
+////        Jugador.setPosInicial(indiceSf);
+//////        Casilla.setIndice(posFinal);
+//////        posInicial = posFinal;
+//    }
 }
