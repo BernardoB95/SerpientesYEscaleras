@@ -1,7 +1,7 @@
 
 package serpientesyescaleras;
 
-import java.io.IOException;
+import java.io.*;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -42,6 +42,28 @@ public class SerpientesYEscaleras {
                 break;
                 
             case 2:
+                try
+                {
+                    FileReader fl = new FileReader("Record.txt");
+                    BufferedReader br = new BufferedReader(fl);
+                    
+                    String linea = br.readLine();           //Lectura por Linea
+                    while(linea!=null){                      //Condicion para detener la lectura
+                    System.out.println(linea);           //Impresion de la linea
+                    linea=br.readLine();
+                    }
+                }
+                catch(FileNotFoundException e){            //Excepciones
+                System.out.println("No se encontro el archivo");
+                System.exit(0);
+                }
+                catch(IOException e){
+                    System.out.println("Ocurrio un error I/O");
+                    System.exit(0);
+                } 
+
+                System.out.println("\n");
+                
                 break;
               
             case 3:
@@ -51,9 +73,9 @@ public class SerpientesYEscaleras {
                         + "\nEl juego Serpientes y Escaleras Unimet es una modificacion al"
                         + "\nclasico juego Snake & Ladders, cuyo objetivo principal es llegar "
                         + "\nal final primero que tus oponentes. La pista cuyo recorrido consta"
-                        + "\nde 64 casillas, tiene tiene obstaculos, que son serpientes, cuya "
+                        + "\nde 64 casillas, tiene obstaculos, que son serpientes, cuya "
                         + "\nfuncion es disminuir tu posicion en caso de pisar la cabeza. Pero "
-                        + "\neste recorrido tambien consta de ventajas, que son las escalera,"
+                        + "\neste recorrido tambien consta de ventajas, que son las escaleras,"
                         + "\nestas aumentan tu posicion en el momento que caes en el pie de una."
                         + "\nEsta adaptacion del juego original esta hecha por Bernardo Bello"
                         + "\ny Guillermo Hellmund.");
