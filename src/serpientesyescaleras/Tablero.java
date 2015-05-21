@@ -15,7 +15,6 @@ public class Tablero {
     private Serpientes vecS[];
     private Escaleras vecE[];  
     private File archivo = new File("Record.txt");
-    
     int cont = 1;
     int cont6 = 0;
     
@@ -66,14 +65,17 @@ public class Tablero {
         
     }
     
-    public void MostrarTablero(Jugadores jugador)//Impresion de tablero, parametro MATRIZ
+    public void MostrarTablero(Jugadores jugador) throws IOException//Impresion de tablero, parametro MATRIZ
     {
-        int rand =7;
+        
+        int rand =jugador.LanzarDado();
         int pos = jugador.Accion(rand);
-        boolean ver; 
+        boolean ver=false; 
         Scanner sc = new Scanner(System.in);
         
-        if(rand!=6)
+        if(jugador.getPosFinal()<64)//Validacion FIN JUEGO
+        {
+            if(rand!=6)
                 cont6=0;
         if(rand==6)
             jugador.setStatus(false);
@@ -85,7 +87,9 @@ public class Tablero {
         else
         {
             do{
-                System.out.println("\n\nHas caido en una serpiente/escalera, su nueva posicion es ->"+pos+"\n");
+                if(ver == true){
+                    System.out.println("\n\nHas caido en una serpiente/escalera, su nueva posicion es ->"+pos+"\n");
+                }                
                 ver = false;
                 System.out.println("                     TABLERO");
              for (int i = 0; i < 8; i++)
@@ -146,7 +150,102 @@ public class Tablero {
                 MostrarTablero(jugador);
             }
            
-       }     
+        }
+        }
+        
+        if(jugador.getPosFinal()>=64)
+        {
+            System.out.println("Felicidades! Has ganado");
+        
+            BufferedWriter bw = new BufferedWriter(new FileWriter(archivo,true));
+            String nombre;
+
+            if(archivo.exists())
+            {
+                nombre = jugador.getNombre();
+                bw.write(nombre);
+                bw.newLine();
+
+                bw.close();
+            }
+        }
+        
+//        if(rand!=6)
+//                cont6=0;
+//        if(rand==6)
+//            jugador.setStatus(false);
+//        
+//        if(jugador.isStatus()== true)
+//        {
+//            System.out.println("Debe sacar 6 para ser desbloqueado de la posicion [0]");
+//        }
+//        else
+//        {
+//            do{
+//                if(ver == true){
+//                    System.out.println("\n\nHas caido en una serpiente/escalera, su nueva posicion es ->"+pos+"\n");
+//                }                
+//                ver = false;
+//                System.out.println("                     TABLERO");
+//             for (int i = 0; i < 8; i++)
+//             {
+//                 System.out.println("");
+//                 for (int j = 0; j < 8; j++)
+//                 {
+//                     if (Matriz[i][j].isStatusS()==true){
+//                          System.out.print("[ $]\t");
+//                          if(jugador.getPosFinal() == Matriz[i][j].getIndice())
+//                          {
+//                              
+//                             jugador.setPosFinal(Matriz[i][j].getPosFinalS());
+//                             jugador.setPosInicial(Matriz[i][j].getPosFinalS());
+//                             pos = Matriz[i][j].getPosFinalS();
+//                              ver=true;
+//                          }
+//                     }else if (Matriz[i][j].isStatusE()==true){
+//                          System.out.print("[ #]\t"); 
+//                          if(jugador.getPosFinal() == Matriz[i][j].getIndice())
+//                          {
+//                              
+//                             jugador.setPosFinal(Matriz[i][j].getPosFinalE());
+//                             jugador.setPosInicial(Matriz[i][j].getPosFinalE());
+//                             pos = Matriz[i][j].getPosFinalE();
+//                              ver=true;
+//                          }
+//                     }else if(Matriz[i][j].getIndice() == pos)
+//                     {
+//                         System.out.print("[X]\t");
+//                     }else {
+//                        System.out.print("["+Matriz[i][j].getIndice()+"]"+"\t"); 
+//                     }
+//                 }
+//             }
+//            }while(ver==true);
+//        }
+//        
+//               
+//            
+//       if(rand == 6){
+//           cont6++;
+//            if(cont6 == 3){
+//                jugador.setStatus(true);
+//                jugador.setPosFinal(0);
+//                jugador.setPosInicial(0);
+//                System.out.println("\nEl jugador se ha devuelto a la casilla [0]");
+//                System.out.println("Volver a sacar 6 en proximas rondas para salir de la penalidad.");
+//                System.out.println("");
+//                cont6 =0;
+//                
+//                
+//            }else{
+//            System.out.println("");
+//            System.out.println("Le toca repetir turno ya que salio 6. Lanzar el dado? [1] Si   [2] No");
+//            int lanzar = sc.nextInt();
+//            if(lanzar == 1)
+//                MostrarTablero(jugador);
+//            }
+//           
+//       }     
         
         
     }

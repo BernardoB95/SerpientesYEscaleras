@@ -1,12 +1,14 @@
 
 package serpientesyescaleras;
 
+import java.io.IOException;
 import java.util.Random;
 import java.util.Scanner;
 
 
 public class SerpientesYEscaleras {
 
+    public static Scanner sc = new Scanner(System.in);
     
     public int Menu()
     {
@@ -20,7 +22,7 @@ public class SerpientesYEscaleras {
         return resp = sc.nextInt();
     }
     
-    public void Juego(int Menu)
+    public void Juego(int Menu) throws IOException
     {
         switch(Menu)
         {
@@ -36,7 +38,7 @@ public class SerpientesYEscaleras {
         }
     }
     
-    public void CantidadJugadores()
+    public void CantidadJugadores() throws IOException
     {
         int selec = 0;
         Scanner sc = new Scanner(System.in);
@@ -65,13 +67,23 @@ public class SerpientesYEscaleras {
         }
     }
     
-    public void Jugar2()
+    public void Jugar2() throws IOException
     {
-        Scanner sc = new Scanner(System.in);
+        
         Tablero tab = new Tablero();
         int num;
         Jugadores jug = new Jugadores();
         Jugadores jug2 = new Jugadores();
+        
+        
+        System.out.println("[Jugador 1] Introduzca su nombre: ");
+        String nombre = sc.next();
+        jug.setNombre(nombre);
+        
+        System.out.println("[Jugador 2] Introduzca su nombre: ");
+        nombre = sc.next();
+        jug2.setNombre(nombre);
+        
         
         tab.CrearTableroJuego();
                 int cont1=1;
@@ -113,12 +125,24 @@ public class SerpientesYEscaleras {
 
     }
     
-    public void Jugar3()
+    public void Jugar3() throws IOException
     {
         Tablero tab = new Tablero();
         Jugadores jug = new Jugadores();
         Jugadores jug2 = new Jugadores();
         Jugadores jug3 = new Jugadores();
+        
+        System.out.println("[Jugador 1] Introduzca su nombre: ");
+        String nombre = sc.next();
+        jug.setNombre(nombre);
+        
+        System.out.println("[Jugador 2] Introduzca su nombre: ");
+        nombre = sc.next();
+        jug2.setNombre(nombre);
+        
+        System.out.println("[Jugador 3] Introduzca su nombre: ");
+        nombre = sc.next();
+        jug3.setNombre(nombre);
         
         int num;
         Scanner sc = new Scanner(System.in);
@@ -174,13 +198,29 @@ public class SerpientesYEscaleras {
                 
     }
     
-    public void Jugar4()
+    public void Jugar4() throws IOException
     {
         Tablero tab = new Tablero();
         Jugadores jug = new Jugadores();
         Jugadores jug2 = new Jugadores();
         Jugadores jug3 = new Jugadores();
         Jugadores jug4 = new Jugadores();
+        
+        System.out.println("[Jugador 1] Introduzca su nombre: ");
+        String nombre = sc.next();
+        jug.setNombre(nombre);
+        
+        System.out.println("[Jugador 2] Introduzca su nombre: ");
+        nombre = sc.next();
+        jug2.setNombre(nombre);
+        
+        System.out.println("[Jugador 3] Introduzca su nombre: ");
+        nombre = sc.next();
+        jug3.setNombre(nombre);
+        
+        System.out.println("[Jugador 4] Introduzca su nombre: ");
+        nombre = sc.next();
+        jug4.setNombre(nombre);
         
         int num;
         Scanner sc = new Scanner(System.in);
@@ -247,12 +287,14 @@ public class SerpientesYEscaleras {
                 
     }
     
-    public static void main(String[] args) 
+    public static void main(String[] args) throws IOException 
     {
         SerpientesYEscaleras sye = new SerpientesYEscaleras();
         Tablero tab = new Tablero();
         
         sye.Juego(sye.Menu()); 
+        
+        
        
 
         
