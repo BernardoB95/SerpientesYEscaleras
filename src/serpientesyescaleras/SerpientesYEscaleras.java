@@ -17,6 +17,7 @@ public class SerpientesYEscaleras {
         System.out.println("[1] Jugar\n"
                            +"[2] Highscores\n"
                            +"[3] Instrucciones\n");
+        
         int resp=0;
         Scanner sc = new Scanner(System.in);
         return resp = sc.nextInt();
@@ -27,7 +28,16 @@ public class SerpientesYEscaleras {
         switch(Menu)
         {
             case 1: 
-//                TipoJuego();
+//                int num = 0;
+//                do
+//                {
+//                    System.out.println("Modalidades de juego [1]Easy  [2]Hard");
+//                    num = sc.nextInt();
+//                    if(num!=1 && num!=2)
+//                        System.out.println("El numero ingresado es invalido");
+//                }
+//                while(num!=1 && num!=2);
+//                tab.TipoJuego(num);
                 CantidadJugadores();
                 break;
                 
@@ -35,6 +45,23 @@ public class SerpientesYEscaleras {
                 break;
               
             case 3:
+                
+                System.out.println("            SERPIENTES Y ESCALERAS\n"
+                        + "=======================================================\n"
+                        + "\nEl juego Serpientes y Escaleras Unimet es una modificacion al"
+                        + "\nclasico juego Snake & Ladders, cuyo objetivo principal es llegar "
+                        + "\nal final primero que tus oponentes. La pista cuyo recorrido consta"
+                        + "\nde 64 casillas, tiene tiene obstaculos, que son serpientes, cuya "
+                        + "\nfuncion es disminuir tu posicion en caso de pisar la cabeza. Pero "
+                        + "\neste recorrido tambien consta de ventajas, que son las escalera,"
+                        + "\nestas aumentan tu posicion en el momento que caes en el pie de una."
+                        + "\nEsta adaptacion del juego original esta hecha por Bernardo Bello"
+                        + "\ny Guillermo Hellmund.");
+                System.out.println("\nPara volver al menu inicial presione [1]");
+                int opcion = sc.nextInt();
+                if(opcion == 1)
+                    Juego(Menu());
+                
                 break;
         }
     }

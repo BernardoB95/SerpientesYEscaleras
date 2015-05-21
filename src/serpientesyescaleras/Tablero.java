@@ -260,11 +260,17 @@ public class Tablero {
         
     }
     
-//    public boolean TipoJuego()
-//    {
-//     Este boolean deberia retornar true o false para que el if de mostrarmtatriz furule   
-//
-//    }
+    public boolean TipoJuego(int num)//Metodo tryhard
+    {
+        boolean variable = false;
+     //Este boolean deberia retornar true o false para que el if de mostrarmtatriz furule   
+        if(num==1)
+            variable = true;
+        else if(num==2)
+            variable = false;
+                    
+        return variable;
+    }
       
     public void AsiganarSerpiente(/*Jugadores Jugador*/) throws IOException// Modificacion parametro
     {
