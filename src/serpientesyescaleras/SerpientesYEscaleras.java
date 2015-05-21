@@ -28,16 +28,6 @@ public class SerpientesYEscaleras {
         switch(Menu)
         {
             case 1: 
-//                int num = 0;
-//                do
-//                {
-//                    System.out.println("Modalidades de juego [1]Easy  [2]Hard");
-//                    num = sc.nextInt();
-//                    if(num!=1 && num!=2)
-//                        System.out.println("El numero ingresado es invalido");
-//                }
-//                while(num!=1 && num!=2);
-//                tab.TipoJuego(num);
                 CantidadJugadores();
                 break;
                 
@@ -88,20 +78,6 @@ public class SerpientesYEscaleras {
         }
     }
     
-//    public void TipoJuego ()
-//    {
-//        Tablero tab = new Tablero();
-//        System.out.println("Ingrese el modo de juego, [1] Termina al pasar 64  [2] Termina en 64 exacto si no sedes turno");
-//        int tipo = sc.nextInt();
-//        if(tipo ==1){
-//             return true;
-//        }else{
-//
-//            return false;
-//        }
-//        
-//        
-//    }
     
     public void CantidadJugadores() throws IOException
     {
@@ -114,17 +90,20 @@ public class SerpientesYEscaleras {
         switch(selec)
         {
             case 2:
+                System.out.println("Modalidad: [1] Facil  [2]Dificil");
                 Jugar2();               
             break;
                 
             case 3:
+                System.out.println("Modalidad: [1] Facil  [2]Dificil");
                 Jugar3();
             break;
                 
             case 4:
+                System.out.println("Modalidad: [1] Facil  [2]Dificil");
                 Jugar4();
             break;
-                
+    
             default:
                 System.out.println("Numero invalido ingresado. Vuelva a ingresarlo por favor");
             break;
@@ -137,10 +116,17 @@ public class SerpientesYEscaleras {
         
         Tablero tab = new Tablero();
         int num;
+        int opcion;
         Jugadores jug = new Jugadores();
         Jugadores jug2 = new Jugadores();
         
-        
+        do
+        {
+        opcion = sc.nextInt();  //Scanner opcion, pase por parametros
+        if(opcion!=1 && opcion !=2)
+                System.out.println("Valor incorrecto. Vuelva a ingresarlo");
+        }
+        while(opcion!=1 && opcion !=2);
         System.out.println("[Jugador 1] Introduzca su nombre: ");
         String nombre = sc.next();
         jug.setNombre(nombre);
@@ -148,6 +134,7 @@ public class SerpientesYEscaleras {
         System.out.println("[Jugador 2] Introduzca su nombre: ");
         nombre = sc.next();
         jug2.setNombre(nombre);
+        
         
         
         tab.CrearTableroJuego();
@@ -163,7 +150,7 @@ public class SerpientesYEscaleras {
                         System.out.println("[Jugador 1]Desea lanzar el dado?: [1] Si  [2] No");
                         num=sc.nextInt();
                         if(num==1){
-                            tab.MostrarTablero(jug);
+                            tab.MostrarTablero(jug,opcion);//Envia parametro a MostrarTab
                             System.out.println("\nPosicion [Jugador 1]: "+jug.getPosFinal());
                             System.out.println("\nPosicion [Jugador 2]: "+jug2.getPosFinal());
 
@@ -178,7 +165,7 @@ public class SerpientesYEscaleras {
                         num=sc.nextInt();
                         if(num==1)
                         {
-                            tab.MostrarTablero(jug2);
+                            tab.MostrarTablero(jug2,opcion);
                             System.out.println("\nPosicion [Jugador 1]: "+jug.getPosFinal());
                             System.out.println("\nPosicion [Jugador 2]: "+jug2.getPosFinal());
                             System.out.println("\n");
@@ -196,6 +183,15 @@ public class SerpientesYEscaleras {
         Jugadores jug = new Jugadores();
         Jugadores jug2 = new Jugadores();
         Jugadores jug3 = new Jugadores();
+        int opcion;
+        
+        do
+        {
+        opcion = sc.nextInt();
+        if(opcion!=1 && opcion !=2)
+                System.out.println("Valor incorrecto. Vuelva a ingresarlo");
+        }
+        while(opcion!=1 && opcion !=2);
         
         System.out.println("[Jugador 1] Introduzca su nombre: ");
         String nombre = sc.next();
@@ -225,7 +221,7 @@ public class SerpientesYEscaleras {
                         num=sc.nextInt();
                         if(num==1)
                         {
-                            tab.MostrarTablero(jug);
+                            tab.MostrarTablero(jug,opcion);
                             System.out.println("\nPosicion [Jugador 1]: "+jug.getPosFinal());
                             System.out.println("\nPosicion [Jugador 2]: "+jug2.getPosFinal());
                             System.out.println("\nPosicion [Jugador 3]: "+jug3.getPosFinal());
@@ -239,7 +235,7 @@ public class SerpientesYEscaleras {
                         num=sc.nextInt();
                         if(num==1)
                         {
-                            tab.MostrarTablero(jug2);
+                            tab.MostrarTablero(jug2,opcion);
                             System.out.println("\nPosicion [Jugador 1]: "+jug.getPosFinal());
                             System.out.println("\nPosicion [Jugador 2]: "+jug2.getPosFinal());
                             System.out.println("\nPosicion [Jugador 3]: "+jug3.getPosFinal());
@@ -252,7 +248,7 @@ public class SerpientesYEscaleras {
                         System.out.println("[Jugador 3]Desea lanzar el dado?: [1] Si  [2] No");
                         num=sc.nextInt();
                         if(num==1){
-                            tab.MostrarTablero(jug3);
+                            tab.MostrarTablero(jug3,opcion);
                             System.out.println("\nPosicion [Jugador 1]: "+jug.getPosFinal());
                             System.out.println("\nPosicion [Jugador 2]: "+jug2.getPosFinal());
                             System.out.println("\nPosicion [Jugador 3]: "+jug3.getPosFinal());
@@ -270,7 +266,14 @@ public class SerpientesYEscaleras {
         Jugadores jug2 = new Jugadores();
         Jugadores jug3 = new Jugadores();
         Jugadores jug4 = new Jugadores();
-        
+        int opcion;
+        do
+        {
+        opcion = sc.nextInt();
+        if(opcion!=1 && opcion !=2)
+                System.out.println("Valor incorrecto. Vuelva a ingresarlo");
+        }
+        while(opcion!=1 && opcion !=2);
         System.out.println("[Jugador 1] Introduzca su nombre: ");
         String nombre = sc.next();
         jug.setNombre(nombre);
@@ -302,7 +305,7 @@ public class SerpientesYEscaleras {
                     System.out.println("[Jugador 1]Desea lanzar el dado?: [1] Si  [2] No");
                     num=sc.nextInt();
                     if(num==1){
-                        tab.MostrarTablero(jug);
+                        tab.MostrarTablero(jug,opcion);
                         System.out.println("\nPosicion [Jugador 1]: "+jug.getPosFinal());
                         System.out.println("\nPosicion [Jugador 2]: "+jug2.getPosFinal());
                         System.out.println("\nPosicion [Jugador 3]: "+jug3.getPosFinal());
@@ -315,7 +318,7 @@ public class SerpientesYEscaleras {
                     System.out.println("[Jugador 2]Desea lanzar el dado?: [1] Si  [2] No");
                     num=sc.nextInt();
                     if(num==1){
-                        tab.MostrarTablero(jug2);
+                        tab.MostrarTablero(jug2,opcion);
                         System.out.println("\nPosicion [Jugador 1]: "+jug.getPosFinal());
                         System.out.println("\nPosicion [Jugador 2]: "+jug2.getPosFinal());
                         System.out.println("\nPosicion [Jugador 3]: "+jug3.getPosFinal());
@@ -327,7 +330,7 @@ public class SerpientesYEscaleras {
                     System.out.println("[Jugador 3]Desea lanzar el dado?: [1] Si  [2] No");
                     num=sc.nextInt();
                     if(num==1){
-                        tab.MostrarTablero(jug3);
+                        tab.MostrarTablero(jug3,opcion);
                         System.out.println("\nPosicion [Jugador 1]: "+jug.getPosFinal());
                         System.out.println("\nPosicion [Jugador 2]: "+jug2.getPosFinal());
                         System.out.println("\nPosicion [Jugador 3]: "+jug3.getPosFinal());
@@ -340,7 +343,7 @@ public class SerpientesYEscaleras {
                     System.out.println("[Jugador 4]Desea lanzar el dado?: [1] Si  [2] No");
                     num=sc.nextInt();
                     if(num==1){
-                        tab.MostrarTablero(jug4);
+                        tab.MostrarTablero(jug4,opcion);
                         System.out.println("\nPosicion [Jugador 1]: "+jug.getPosFinal());
                         System.out.println("\nPosicion [Jugador 2]: "+jug2.getPosFinal());
                         System.out.println("\nPosicion [Jugador 3]: "+jug3.getPosFinal());
