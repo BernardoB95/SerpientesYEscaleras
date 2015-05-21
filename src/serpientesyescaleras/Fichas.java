@@ -12,7 +12,7 @@ public class Fichas {
     private boolean statusE=false;
     private int posFinalE;
     private int posFinalS;
-    private boolean statusmodo;
+//    private int statusmodo;
 
     
     public Fichas ()
@@ -70,17 +70,19 @@ public class Fichas {
         this.posFinalS = posFinalS;
     }
 
-    public boolean isStatusmodo() {
-        return statusmodo;
+//    public int getStatusmodo() {
+//        return statusmodo;
+//    }
+//
+//    public void setStatusmodo(int statusmodo) {
+//        this.statusmodo = statusmodo;
     }
 
-    public void setStatusmodo(boolean statusmodo) {
-        this.statusmodo = statusmodo;
-    }
+
     
     
     
     
 
     
-}
+

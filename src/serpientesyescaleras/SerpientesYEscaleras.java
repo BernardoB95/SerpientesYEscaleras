@@ -27,7 +27,7 @@ public class SerpientesYEscaleras {
         switch(Menu)
         {
             case 1: 
-//                TipoJuego();
+                TipoJuego();
                 CantidadJugadores();
                 break;
                 
@@ -39,20 +39,20 @@ public class SerpientesYEscaleras {
         }
     }
     
-//    public void TipoJuego ()
-//    {
-//        Tablero tab = new Tablero();
-//        System.out.println("Ingrese el modo de juego, [1] Termina al pasar 64  [2] Termina en 64 exacto si no sedes turno");
-//        int tipo = sc.nextInt();
-//        if(tipo ==1){
-//             return true;
-//        }else{
-//
-//            return false;
-//        }
-//        
-//        
-//    }
+    public int TipoJuego ()
+    {
+        Tablero tab = new Tablero();
+        System.out.println("Ingrese el modo de juego, [1] Termina al pasar 64  [2] Termina en 64 exacto si no sedes turno");
+        int tipo = sc.nextInt();
+        if(tipo ==1){
+             return tab.TipoJuego(1);
+        }else{
+
+            return tab.TipoJuego(0);
+        }
+        
+        
+    }
     
     public void CantidadJugadores() throws IOException
     {

@@ -62,16 +62,18 @@ public class Tablero {
          }
         AsiganarEscalera();
         
-        
     }
     
     public void MostrarTablero(Jugadores jugador) throws IOException//Impresion de tablero, parametro MATRIZ
     {
         
         int rand =jugador.LanzarDado();
-        int pos = jugador.Accion(rand);
+        int pos = jugador.Accion(rand); 
         boolean ver=false;
         Scanner sc = new Scanner(System.in);
+
+        
+  
         
         if(jugador.getPosFinal()<64)//Validacion FIN JUEGO
         {
@@ -92,10 +94,15 @@ public class Tablero {
                     System.out.println("\n\nHas caido en una serpiente/escalera, su nueva posicion es ->"+pos+"\n");
                 }                
                 ver = false;
-//                if(pos>64 && TipoJuego() == false){
-//                    System.out.println("Has sido devuelto a tu casilla ya que debes llegar exacto a 64");
-//                    pos = pos - rand;
-//                }
+                if(TipoJuego() == 1)
+                    System.out.println("pipipipipipipi");
+                if(pos>10 && TipoJuego() == 0){
+                    System.out.println("Has sido devuelto a tu casilla ya que debes llegar exacto a 64");
+                    pos = pos - rand;
+                    jugador.setPosFinal(pos);
+                    jugador.setPosInicial(pos);
+                    
+                }
                 System.out.println("\n         Has sacado ["+rand+"] en el dado\n");
                 System.out.println("                     TABLERO");
              for (int i = 0; i < 8; i++)
@@ -260,11 +267,23 @@ public class Tablero {
         
     }
     
-//    public boolean TipoJuego()
-//    {
-//     Este boolean deberia retornar true o false para que el if de mostrarmtatriz furule   
+    public int TipoJuego(int a)
+    {
+        return a;
+//     Fichas fichas = new Fichas();
+     
+//     System.out.println("Ingrese el modo de juego, [1] Termina al pasar 64  [2] Termina en 64 exacto si no sedes turno");
+//        int tipo = sc.nextInt();
+//        if(tipo ==1){
+////             fichas.setStatusmodo(1);
+//            return 1;
+//        }else{
 //
-//    }
+////           fichas.setStatusmodo(0);
+//            return 0;
+//        }
+
+    }
       
     public void AsiganarSerpiente(/*Jugadores Jugador*/) throws IOException// Modificacion parametro
     {
@@ -346,6 +365,10 @@ public class Tablero {
         }
         
 //        public 
+    }
+
+    private int TipoJuego() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
